@@ -1,15 +1,14 @@
-function SecretPassword(password) {
-    const part1 = password.slice(5);
-    const part2 = password.slice(0, 5);
-    const finalPart = part1.split('').reverse().join('') + part2.split('').reverse().join('');
-    return finalPart;
+function crypto(password) {
+    if (password.length < 2) {
+        return password;
+    }
+    return password[1] + password[0] + crypto(password.slice(2));
 }
 
-function checkPassword(secretpassword, password) {
-    const encryptedpass = SecretPassword(password);
-    return encryptedpass === secretpassword;
+function check(secretPassword, password) {
+    return crypto(password) === secretPassword;
 }
 
-console.log(SecretPassword('LaminYamal'));
-console.log(checkPassword('lamaYnimaL', 'LaminYamal'));
-console.log(checkPassword('lamaYnimaL', 'qwe'));
+console.log(crypto('password'));
+console.log(check('ssapdorw', 'password'));
+console.log(check('ssapdorw', 'wrong'));
