@@ -18,6 +18,6 @@ function filtering(arr, func) {
 
 
 const numbers = [3, 6, 9, 2];
-const filtered = filtering(numbers, removeGreaterThanFive);
+const filtered = filtering(numbers, remove);
 
 console.log(filtered)
