@@ -1,32 +1,26 @@
 const card = '4561-2612-1234-5464';
 
 function cardLuna(card) {
-  const newCard = [];
-  const data = card.replace(/-/g,'');
-  for (const i in data) {
-    if (i % 2 === 0) {
-      let qwe = 0;
-      qwe = data[i] * 2;
-      if (qwe <= 9) {
-        newCard.push(qwe)
-      } else {
-        newCard.push(qwe-9)
+  const digits = card.replace(/-/g, '');
+
+  let sum = 0;
+  let shouldDouble = false;
+
+  for (let i = digits.length - 1; i >= 0; i--) {
+    let num = Number(digits[i]);
+
+    if (shouldDouble) {
+      num *= 2;
+      if (num > 9) {
+        num -= 9;
       }
     }
 
-    if (i % 2 === 1) {
-      newCard.push(i);
-    }
-
-  }
-  const newCard2 = newCard.join('')
-  let answer = 0;
-  for (const el of newCard2) {
-    answer += el;
+    sum += num;
+    shouldDouble = !shouldDouble;
   }
 
-  return answer;
+  return sum % 10 === 0;
 }
-
 
 console.log(cardLuna(card));
