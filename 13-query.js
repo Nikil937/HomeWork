@@ -5,7 +5,7 @@ const examples = {
 
 // search=Вася&take=10
 function toQueryType(example) {
-    return `search=${this.search}&take=${this.take}`;
+    return `search=${example.search}&take=${example.take}`;
 }
 
 console.log(toQueryType(examples))
