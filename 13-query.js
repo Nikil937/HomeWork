@@ -4,11 +4,13 @@ const examples = {
 }
 
 // search=Вася&take=10
+
 function toQueryType(example) {
-    return `search=${example.search}&take=${example.take}`;
-}
+    const result = [];
+    for (const key in example) {
+        result.push(`${key}=${example[key]}`)
+    };
+    return result.join('&');
+};
 
-console.log(toQueryType(examples))
-
-
-
+console.log(toQueryType(examples));
