@@ -5,10 +5,10 @@ const examples = {
 
 // search=Вася&take=10
 function toQueryType(example) {
-    return `search=${example.search}%take=${example.take}`;
+    return `search=${this.search}&take=${this.take}`;
 }
 
-console.log(toQueryType(examples));
+console.log(toQueryType(examples))
 
 
 
